@@ -12,15 +12,17 @@ def condb(event):
     if resultbd==inputbd:
         label3 = Label(root, text='Верно')
         label3.pack()
-        cr_main()
+        creat_main()
 
     else:
         label3=Label(root,text='Не верный логин или пароль')
         label3.pack()
 
-def cr_main():
+def creat_main():
     root.destroy()
     root2 = Tk()
+    root2.title('Главное окно')
+    root2.geometry('600x800')
 
 root = Tk()
 root.title('Выбор пользователя')
