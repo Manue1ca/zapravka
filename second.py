@@ -13,7 +13,6 @@ def condb(event):
         label3 = Label(root, text='Верно')
         label3.pack()
         creat_main()
-
     else:
         label3=Label(root,text='Не верный логин или пароль')
         label3.pack()
@@ -23,6 +22,7 @@ def creat_main():
     root2 = Tk()
     root2.title('Главное окно')
     root2.geometry('600x800')
+
 
 root = Tk()
 root.title('Выбор пользователя')
@@ -38,8 +38,5 @@ txt2.pack()
 button1=Button(root,text='Представьтесь',width=25,height=3,bg='#f6ff00',fg='red',font='arial 14')
 button1.bind('<Button-1>', condb)
 button1.pack()
-
-
-
 
 root.mainloop()
