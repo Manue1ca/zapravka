@@ -9,6 +9,7 @@ def creat_main():
     but_add.bind('<Button-1>', ev_add)
     but_add.bind('<Return>', ev_add)
     but_add.pack()
+
     root2.mainloop()
 #событие по нажатию кнопки добаить в главном меню
 def ev_add(event):
@@ -22,9 +23,11 @@ def ev_add(event):
                       'type': Type.get(),
                       'toner': Toner.get()
                   })
-
         conn.commit()
         conn.close()
+        kart.delete(0,END)
+        Type.delete(0, END)
+        Toner.delete(0, END)
     root3 = Tk()
     root3.title('Окно добавления')
     root3.geometry('400x200+400+400')
