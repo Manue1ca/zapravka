@@ -2,6 +2,18 @@ from tkinter import*
 import sqlite3
 
 def creat_main():
+    def ev_refresh(event):
+        label_refresh = Label(root2, text="Вы обновили лист")
+        label_refresh.pack()
+        conn = sqlite3.connect('db_kartridji.db')
+        c = conn.cursor()
+        c.execute("SELECT * FROM kart")
+        kart_list = c.fetchall()
+        for x in kart_list:
+            kart_list_label = Label(root2, text=x)
+            kart_list_label.pack()
+        conn.commit()
+        conn.close()
     root2 = Tk()
     root2.title('Главное окно')
     root2.geometry('600x800')
@@ -9,8 +21,22 @@ def creat_main():
     but_add.bind('<Button-1>', ev_add)
     but_add.bind('<Return>', ev_add)
     but_add.pack()
-
+    refresh_button = Button(root2, text="обновить список")
+    refresh_button.bind('<Button-1>', ev_refresh)
+    refresh_button.pack()
+    conn = sqlite3.connect('db_kartridji.db')
+    c = conn.cursor()
+    c.execute("SELECT * FROM kart")
+    kart_list = c.fetchall()
+    for x in kart_list:
+        kart_list_label = Label(root2, text=x)
+        kart_list_label.pack()
+    conn.commit()
+    conn.close()
     root2.mainloop()
+
+
+
 #событие по нажатию кнопки добаить в главном меню
 def ev_add(event):
     # действие subm_btn command=submit
@@ -51,6 +77,7 @@ def ev_add(event):
     subm_btn = Button(root3, text='Добавить',)
     subm_btn.bind('<Button-1>', submit)
     subm_btn.grid(row=6, column=0, columnspan=2, pady=20, padx=20, ipadx=10)
+
 
 creat_main()
 
